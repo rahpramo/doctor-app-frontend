@@ -1,13 +1,7 @@
 // pages/AllAppointments.js (updated)
-import React, { useCallback, useEffect } from "react";
-import {
-  Box,
-  Typography,
-  Divider,
-  CircularProgress,
-  Alert
-} from "@mui/material";
-import { useAppointments } from "../hooks/useAppointments";
+import React, {useCallback, useEffect} from "react";
+import {Box, Typography, Divider, CircularProgress, Alert} from "@mui/material";
+import {useAppointments} from "../hooks/useAppointments";
 import AppointmentCard from "../components/AppointmentCard";
 import ConfirmationDialog from "../components/ConfirmationDialog";
 
@@ -24,46 +18,52 @@ const AllAppointments = () => {
     handleUpdate,
     showDialog,
     hideDialog,
-    setError
+    setError,
   } = useAppointments();
 
-    useEffect(() => {
-      if(!appointments || appointments.length === 0){
-          loadAppointments();
-      }
-    }, [loadAppointments]);
+  useEffect(() => {
+    if (!appointments || appointments.length === 0) {
+      loadAppointments();
+    }
+  }, [loadAppointments, appointments, appointments.length]);
 
-  const handleDeleteClick = useCallback((appointment) => {
-    showDialog({
-      title: "Cancel Appointment",
-      message: `Are you sure you want to cancel the appointment with Dr. ${appointment.doctorName}?`,
-      severity: "warning",
-      onConfirm: () => handleDelete(appointment.documentId, appointment),
-      confirmText: "Yes, Cancel",
-      cancelText: "Keep Appointment"
-    });
-  }, [showDialog, handleDelete]);
+  const handleDeleteClick = useCallback(
+    (appointment) => {
+      showDialog({
+        title: "Cancel Appointment",
+        message: `Are you sure you want to cancel the appointment with Dr. ${appointment.doctorName}?`,
+        severity: "warning",
+        onConfirm: () => handleDelete(appointment.documentId, appointment),
+        confirmText: "Yes, Cancel",
+        cancelText: "Keep Appointment",
+      });
+    },
+    [showDialog, handleDelete]
+  );
 
-  const handleUpdateClick = useCallback((appointment, status) => {
-    const action = status === "Approved" ? "approve" : "reject";
-    const actionText = status === "Approved" ? "approval" : "rejection";
-    
-    showDialog({
-      title: `${status === "Approved" ? "Approve" : "Reject"} Appointment`,
-      message: `Are you sure you want to ${action} the appointment with Dr. ${appointment.doctorName}?`,
-      severity: status === "Approved" ? "info" : "warning",
-      onConfirm: () => handleUpdate(appointment.documentId, status, appointment),
-      confirmText: `Yes, ${action}`,
-      cancelText: "Cancel"
-    });
-  }, [showDialog, handleUpdate]);
+  const handleUpdateClick = useCallback(
+    (appointment, status) => {
+      const action = status === "Approved" ? "approve" : "reject";
+
+      showDialog({
+        title: `${status === "Approved" ? "Approve" : "Reject"} Appointment`,
+        message: `Are you sure you want to ${action} the appointment with Dr. ${appointment.doctorName}?`,
+        severity: status === "Approved" ? "info" : "warning",
+        onConfirm: () =>
+          handleUpdate(appointment.documentId, status, appointment),
+        confirmText: `Yes, ${action}`,
+        cancelText: "Cancel",
+      });
+    },
+    [showDialog, handleUpdate]
+  );
 
   if (loading) {
     return (
-      <Box 
-        display="flex" 
-        justifyContent="center" 
-        alignItems="center" 
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
         minHeight="50vh"
         aria-busy="true"
         aria-label="Loading all appointments"
@@ -75,9 +75,9 @@ const AllAppointments = () => {
 
   if (error) {
     return (
-      <Box mt={6} sx={{ p: 4 }}>
-        <Alert 
-          severity="error" 
+      <Box mt={6} sx={{p: 4}}>
+        <Alert
+          severity="error"
           onClose={() => setError("")}
           aria-live="assertive"
         >
@@ -88,7 +88,7 @@ const AllAppointments = () => {
   }
 
   return (
-    <Box mt={6} sx={{ p: 4 }} component="main">
+    <Box mt={6} sx={{p: 4}} component="main">
       <Typography
         variant="h4"
         component="h1"
@@ -105,16 +105,17 @@ const AllAppointments = () => {
       </Typography>
 
       {!appointments || appointments.length === 0 ? (
-        <Typography 
-          variant="body1" 
+        <Typography
+          variant="body1"
           color="text.secondary"
           textAlign="center"
-          sx={{ py: 4 }}
+          sx={{py: 4}}
         >
           No appointments found.
         </Typography>
       ) : (
-        appointments && appointments?.map((appt, idx) => (
+        appointments &&
+        appointments?.map((appt, idx) => (
           <Box key={appt.documentId || appt.id}>
             <AppointmentCard
               appointment={appt}
@@ -124,7 +125,7 @@ const AllAppointments = () => {
               showAdminActions={true}
             />
             {idx < appointments.length - 1 && (
-              <Divider sx={{ my: 2 }} aria-hidden="true" />
+              <Divider sx={{my: 2}} aria-hidden="true" />
             )}
           </Box>
         ))

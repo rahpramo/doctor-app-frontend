@@ -1,13 +1,7 @@
 // pages/MyAppointments.js (updated)
-import React, { useCallback, useEffect } from "react";
-import {
-  Box,
-  Typography,
-  Divider,
-  CircularProgress,
-  Alert
-} from "@mui/material";
-import { useAppointments } from "../hooks/useAppointments";
+import React, {useCallback, useEffect} from "react";
+import {Box, Typography, Divider, CircularProgress, Alert} from "@mui/material";
+import {useAppointments} from "../hooks/useAppointments";
 import AppointmentCard from "../components/AppointmentCard";
 import ConfirmationDialog from "../components/ConfirmationDialog";
 
@@ -19,42 +13,44 @@ const MyAppointments = () => {
     processingId,
     dialogOpen,
     dialogConfig,
-    loadAppointments,
     handleDelete,
     showDialog,
     hideDialog,
     setError,
-    getAppointmentById
+    getAppointmentById,
   } = useAppointments();
 
   useEffect(() => {
-    if(appointments.length === 0){
-        const user = JSON.parse(localStorage.getItem('user'));
-        getAppointmentById(user.email);
+    if (appointments.length === 0) {
+      const user = JSON.parse(localStorage.getItem("user"));
+      getAppointmentById(user.email);
     }
-  }, [getAppointmentById]);
+  }, [getAppointmentById, appointments.length]);
 
-  const handlePayOnline = useCallback((appointment) => {
+  const handlePayOnline = useCallback(() => {
     // Payment integration logic
   }, []);
 
-  const handleDeleteClick = useCallback((appointment) => {
-    showDialog({
-      title: "Cancel Appointment",
-      message: `Are you sure you want to cancel your appointment with Dr. ${appointment.doctorName} on ${appointment.appointmentDate}?`,
-      severity: "warning",
-      onConfirm: () => handleDelete(appointment.documentId, appointment),
-      confirmText: "Yes, Cancel",
-      cancelText: "Keep Appointment"
-    });
-  }, [showDialog, handleDelete]);
+  const handleDeleteClick = useCallback(
+    (appointment) => {
+      showDialog({
+        title: "Cancel Appointment",
+        message: `Are you sure you want to cancel your appointment with Dr. ${appointment.doctorName} on ${appointment.appointmentDate}?`,
+        severity: "warning",
+        onConfirm: () => handleDelete(appointment.documentId, appointment),
+        confirmText: "Yes, Cancel",
+        cancelText: "Keep Appointment",
+      });
+    },
+    [showDialog, handleDelete]
+  );
 
   if (loading) {
     return (
-      <Box 
-        display="flex" 
-        justifyContent="center" 
-        alignItems="center" 
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
         minHeight="50vh"
         aria-busy="true"
         aria-label="Loading my appointments"
@@ -66,9 +62,9 @@ const MyAppointments = () => {
 
   if (error) {
     return (
-      <Box mt={6} sx={{ p: 4 }}>
-        <Alert 
-          severity="error" 
+      <Box mt={6} sx={{p: 4}}>
+        <Alert
+          severity="error"
           onClose={() => setError("")}
           aria-live="assertive"
         >
@@ -79,7 +75,7 @@ const MyAppointments = () => {
   }
 
   return (
-    <Box mt={6} sx={{ p: 4 }} component="main">
+    <Box mt={6} sx={{p: 4}} component="main">
       <Typography
         variant="h4"
         component="h1"
@@ -96,11 +92,11 @@ const MyAppointments = () => {
       </Typography>
 
       {appointments.length === 0 ? (
-        <Typography 
-          variant="body1" 
+        <Typography
+          variant="body1"
           color="text.secondary"
           textAlign="center"
-          sx={{ py: 4 }}
+          sx={{py: 4}}
         >
           No appointments booked yet.
         </Typography>
@@ -115,7 +111,7 @@ const MyAppointments = () => {
               showAdminActions={false}
             />
             {idx < appointments.length - 1 && (
-              <Divider sx={{ my: 2 }} aria-hidden="true" />
+              <Divider sx={{my: 2}} aria-hidden="true" />
             )}
           </Box>
         ))

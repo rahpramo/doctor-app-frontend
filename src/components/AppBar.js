@@ -14,8 +14,6 @@ import {
   List,
   ListItem,
   ListItemText,
-  useMediaQuery,
-  useTheme,
   Divider,
   Avatar,
   CircularProgress,
@@ -51,7 +49,6 @@ const adminLinks = [
 const NavBar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const theme = useTheme();
 
   const [token, setToken] = useState("");
   const [adminUser, setAdminUser] = useState(false);
@@ -60,10 +57,26 @@ const NavBar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const loggedIn = useSelector((state) => state.user.loggedIn);
+
+  const loadDoctors = useCallback(async () => {
+    try {
+      setLoading(true);
+      const result = await fetchDoctors();
+      if (result.success) {
+        dispatch(setDoctors(result.data));
+      } else {
+        console.error("Failed to load doctors:", result.error);
+      }
+    } catch (err) {
+      console.error("Failed to load doctors:", err);
+    } finally {
+      setLoading(false);
+    }
+  }, [dispatch]);
+
   // Check authentication status on component mount and when token changes
   useEffect(() => {
     const checkAuthStatus = () => {
-      const isAuthenticated = AuthService.isAuthenticated();
       const isAdmin = AuthService.isAdmin();
       const userToken = localStorage.getItem("jwtToken");
       setToken(userToken || "");
@@ -81,23 +94,7 @@ const NavBar = () => {
 
     window.addEventListener("storage", handleStorageChange);
     return () => window.removeEventListener("storage", handleStorageChange);
-  }, [loggedIn]); // Added loggedIn to dependencies to re-check auth status on login/logout
-
-  const loadDoctors = useCallback(async () => {
-    try {
-      setLoading(true);
-      const result = await fetchDoctors();
-      if (result.success) {
-        dispatch(setDoctors(result.data));
-      } else {
-        console.error("Failed to load doctors:", result.error);
-      }
-    } catch (err) {
-      console.error("Failed to load doctors:", err);
-    } finally {
-      setLoading(false);
-    }
-  }, [dispatch]);
+  }, [loggedIn, loadDoctors]); // Added loggedIn to dependencies to re-check auth status on login/logout
 
   const handleMenuOpen = useCallback((event) => {
     setAnchorEl(event.currentTarget);
