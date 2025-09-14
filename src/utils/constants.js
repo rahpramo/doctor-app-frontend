@@ -38,7 +38,7 @@ export const filters = [
   "Cardiologist",
   "Gynecologist",
   "Dermatologist",
-  "Pediatricians",
+  "Pediatrician",
   "Neurologist",
   "Gastroenterologist",
 ];
