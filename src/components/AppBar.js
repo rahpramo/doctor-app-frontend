@@ -88,8 +88,6 @@ const NavBar = () => {
     try {
       setLoading(true);
       const result = await fetchDoctors();
-        const doc = await createDoc();
-        console.log(doc, "doc");
       if (result.success) {
         dispatch(setDoctors(result.data));
       } else {
