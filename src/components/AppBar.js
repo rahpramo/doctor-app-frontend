@@ -30,7 +30,7 @@ import {
 } from "@mui/icons-material";
 import {logoutUser} from "../redux/slices/userSlice";
 import {setDoctors} from "../redux/slices/doctorSlice";
-import {createDoc, fetchDoctors} from "../services/data";
+import {fetchDoctors} from "../services/data";
 import {AuthService} from "../services/AuthService";
 
 // Navigation links configuration
@@ -52,7 +52,6 @@ const NavBar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const [token, setToken] = useState("");
   const [adminUser, setAdminUser] = useState(false);

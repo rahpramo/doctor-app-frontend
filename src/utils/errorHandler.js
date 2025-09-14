@@ -1,7 +1,6 @@
 // utils/errorHandler.js
 
 import {ERROR_MESSAGES} from "./constants";
-const strapiApiToken = process.env.REACT_APP_CLOUD_STRAPI_API_TOKEN;
 
 export const handleApiError = (error) => {
   console.error("API Error:", error);
