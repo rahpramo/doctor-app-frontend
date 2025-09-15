@@ -25,11 +25,11 @@ import {
   Work as SpecialtyIcon,
   School as EducationIcon,
 } from "@mui/icons-material";
-import BookingSection from "../components/BookingSection";
+import BookingSection from "./BookingSection";
 import {useSelector} from "react-redux";
-import {useApi} from "../hooks/useApi";
-import {fetchDoctorById} from "../services/data";
-import DoctorCard from "../components/DoctorCard";
+import {useApi} from "../../hooks/useApi";
+import {fetchDoctorById} from "../../services/data";
+import DoctorCard from "./DoctorCard";
 
 const strapiMediaUrl = process.env.REACT_APP_CLOUD_STRAPI_MEDIA_URL;
 

@@ -19,12 +19,12 @@ import {
 } from "@mui/icons-material";
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {loginUser} from "../redux/slices/userSlice";
-import Hero from "../components/Hero";
-import SpecialitySection from "../components/SpecialitySection";
-import {useApi} from "../hooks/useApi";
-import {fetchDoctors} from "../services/data";
-import {AuthService} from "../services/AuthService";
+import {loginUser} from "../../redux/slices/userSlice";
+import Hero from "./Hero";
+import SpecialitySection from "./SpecialitySection";
+import {useApi} from "../../hooks/useApi";
+import {fetchDoctors} from "../../services/data";
+import {AuthService} from "../../services/AuthService";
 
 const strapiMediaUrl = process.env.REACT_APP_CLOUD_STRAPI_MEDIA_URL;
 

@@ -1,21 +1,22 @@
 import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Spinner from "./components/Spinner";
-import ProtectedRoute from "./components/ProtectedRoute";
-import PublicRoute from "./components/PublicRoute";
-import NavBar from "./components/AppBar";
+import Spinner from "./components/shared/Spinner";
+import ProtectedRoute from "./components/navigation/ProtectedRoute";
+import PublicRoute from "./components/navigation/PublicRoute";
+import NavBar from "./components/navigation/AppBar";
+
 
 // Lazy load pages for better performance
-const HomePage = lazy(() => import("./pages/HomePage"));
-const LoginPage = lazy(() => import("./pages/LoginPage"));
-const About = lazy(() => import("./pages/About"));
-const ContactUs = lazy(() => import("./pages/ContactUs"));
-const AllDoctors = lazy(() => import("./pages/AllDoctors"));
-const AppointmentPage = lazy(() => import("./pages/DoctorInfo"));
-const ProfilePage = lazy(() => import("./pages/MyProfile"));
-const MyAppointments = lazy(() => import("./pages/MyAppointments"));
-const AllAppointment = lazy(() => import("./pages/AllAppointments"));
-const FilteredDoctors = lazy(() => import("./pages/FilteredDoctors"));
+const HomePage = lazy(() => import("./components/home/HomePage"));
+const LoginPage = lazy(() => import("./components/authentication/LoginPage"));
+const About = lazy(() => import("./components/about/About"));
+const ContactUs = lazy(() => import("./components/contact/ContactUs"));
+const AllDoctors = lazy(() => import("./components/doctor/AllDoctors"));
+const AppointmentPage = lazy(() => import("./components/doctor/DoctorInfo"));
+const ProfilePage = lazy(() => import("./components/profile/MyProfile"));
+const MyAppointments = lazy(() => import("./components/appointment/MyAppointments"));
+const AllAppointment = lazy(() => import("./components/appointment/AllAppointments"));
+const FilteredDoctors = lazy(() => import("./components/doctor/FilteredDoctors"));
 
 // Loading component for suspense fallback
 const LoadingFallback = () => (

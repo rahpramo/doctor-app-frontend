@@ -9,7 +9,7 @@ import {
   Typography,
   Paper,
 } from "@mui/material";
-import { AuthService } from "../services/AuthService";
+import { AuthService } from "../../services/AuthService";
 
 const ProfilePage = () => {
   const [userData, setUserData] = React.useState(null);

@@ -12,11 +12,11 @@ import {
   Alert,
 } from "@mui/material";
 import {useNavigate, useParams} from "react-router-dom";
-import {filters} from "../utils/constants";
+import {filters} from "../../utils/constants";
 import {useSelector} from "react-redux";
-import {useApi} from "../hooks/useApi";
-import {fetchDoctors} from "../services/data";
-import DoctorCard from "../components/DoctorCard";
+import {useApi} from "../../hooks/useApi";
+import {fetchDoctors} from "../../services/data";
+import DoctorCard from "./DoctorCard";
 
 // Main AllDoctors component
 const AllDoctors = () => {

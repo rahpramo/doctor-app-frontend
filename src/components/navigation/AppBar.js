@@ -26,10 +26,10 @@ import {
   Person as ProfileIcon,
   CalendarToday as AppointmentsIcon,
 } from "@mui/icons-material";
-import {logoutUser} from "../redux/slices/userSlice";
-import {setDoctors} from "../redux/slices/doctorSlice";
-import {fetchDoctors} from "../services/data";
-import {AuthService} from "../services/AuthService";
+import {logoutUser} from "../../redux/slices/userSlice";
+import {setDoctors} from "../../redux/slices/doctorSlice";
+import {fetchDoctors} from "../../services/data";
+import {AuthService} from "../../services/AuthService";
 
 // Navigation links configuration
 const userLinks = [

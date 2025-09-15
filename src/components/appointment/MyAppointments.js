@@ -1,9 +1,9 @@
 // pages/MyAppointments.js (updated)
 import React, {useCallback, useEffect} from "react";
 import {Box, Typography, Divider, CircularProgress, Alert} from "@mui/material";
-import {useAppointments} from "../hooks/useAppointments";
-import AppointmentCard from "../components/AppointmentCard";
-import ConfirmationDialog from "../components/ConfirmationDialog";
+import {useAppointments} from "../../hooks/useAppointments";
+import AppointmentCard from "./AppointmentCard";
+import ConfirmationDialog from "./ConfirmationDialog";
 
 const MyAppointments = () => {
   const {

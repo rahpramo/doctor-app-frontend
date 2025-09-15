@@ -83,3 +83,36 @@ export const LOCAL_STORAGE_KEYS = {
   USER_DATA: 'user',
   USER_TYPE: 'userType'
 };
+
+export const specialities = [
+  {
+    name: "General physician",
+    href: "/doctors/General physician",
+    img: "/assets/General_physician.svg", // keep your full inline SVG or replace with asset path
+  },
+  {
+    name: "Gynecologist",
+    href: "/doctors/Gynecologist",
+    img: "/assets/Gynecologist.svg",
+  },
+  {
+    name: "Dermatologist",
+    href: "/doctors/Dermatologist",
+    img: "/assets/Dermatologist.svg",
+  },
+  {
+    name: "Pediatrician",
+    href: "/doctors/Pediatrician",
+    img: "/assets/Pediatricians.svg",
+  },
+  {
+    name: "Neurologist",
+    href: "/doctors/Neurologist",
+    img: "/assets/Neurologist.svg",
+  },
+  {
+    name: "Gastroenterologist",
+    href: "/doctors/Gastroenterologist",
+    img: "/assets/Gastroenterologist.svg",
+  },
+];

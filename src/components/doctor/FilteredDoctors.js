@@ -16,8 +16,8 @@ import {
 } from "@mui/material";
 import {useNavigate, useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {useApi} from "../hooks/useApi";
-import {fetchDoctors} from "../services/data";
+import {useApi} from "../../hooks/useApi";
+import {fetchDoctors} from "../../services/data";
 import {
   Home as HomeIcon,
   NavigateNext as NavigateNextIcon,

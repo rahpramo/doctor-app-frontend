@@ -1,12 +1,12 @@
 import React, {useState, useCallback, useMemo} from "react";
-import Login from "../components/Login";
-import Register from "../components/Register";
+import Login from "./Login";
+import Register from "./Register";
 import {Button, Box, Alert, IconButton} from "@mui/material";
 import {useNavigate} from "react-router-dom";
-import {useAppointments} from "../context/AppointmentContext";
-import {loginUser} from "../redux/slices/userSlice";
+import {useAppointments} from "../../context/AppointmentContext";
+import {loginUser} from "../../redux/slices/userSlice";
 import {useDispatch} from "react-redux";
-import {AuthService} from "../services/AuthService";
+import {AuthService} from "../../services/AuthService";
 import CloseIcon from "@mui/icons-material/Close";
 
 const LoginPage = () => {

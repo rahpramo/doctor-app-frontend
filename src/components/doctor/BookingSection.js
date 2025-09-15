@@ -18,10 +18,10 @@ import {
 import {AdapterDateFns} from "@mui/x-date-pickers/AdapterDateFns";
 import {useDispatch} from "react-redux";
 import {format, isBefore, addMinutes} from "date-fns";
-import {useApi} from "../hooks/useApi";
+import {useApi} from "../../hooks/useApi";
 import {CalendarToday as CalendarIcon} from "@mui/icons-material";
-import {addAppointment} from "../redux/slices/appointmentsSlice";
-import {createAppointment} from "../services/data";
+import {addAppointment} from "../../redux/slices/appointmentsSlice";
+import {createAppointment} from "../../services/data";
 
 const BookingSection = ({selectedDoctor}) => {
   const [selectedDateTime, setSelectedDateTime] = useState(null);
