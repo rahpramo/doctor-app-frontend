@@ -1,5 +1,5 @@
 // slices/appointmentsSlice.js
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
   list: [],
@@ -20,38 +20,23 @@ const appointmentsSlice = createSlice({
       state.error = null;
     },
     updateAppointment: (state, action) => {
-      const { id, updates } = action.payload;
+      const {id, updates} = action.payload;
       const index = state.list.findIndex(
         (appt) => appt.id === id || appt.appointmentId === id
       );
       if (index !== -1) {
-        state.list[index] = { ...state.list[index], ...updates };
+        state.list[index] = {...state.list[index], ...updates};
       }
       state.error = null;
     },
     cancelAppointment: (state, action) => {
       const index = state.list.findIndex(
-        (appt) => appt.id === action.payload || appt.appointmentId === action.payload
+        (appt) =>
+          appt.id === action.payload || appt.appointmentId === action.payload
       );
       if (index !== -1) {
         state.list[index].status = "cancelled";
       }
-    },
-    removeAppointment: (state, action) => {
-      state.list = state.list.filter(
-        (appt) =>
-          appt.id !== action.payload && appt.appointmentId !== action.payload
-      );
-      state.error = null;
-    },
-    setLoading: (state, action) => {
-      state.loading = action.payload;
-    },
-    setError: (state, action) => {
-      state.error = action.payload;
-    },
-    clearError: (state) => {
-      state.error = null;
     },
   },
 });
@@ -61,11 +46,6 @@ export const {
   addAppointment,
   updateAppointment,
   cancelAppointment,
-  removeAppointment,
-  setLoading,
-  setError,
-  clearError,
 } = appointmentsSlice.actions;
 
 export default appointmentsSlice.reducer;
-

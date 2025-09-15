@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import {Box, Button, Container, Grid, Typography} from "@mui/material";
 
 const Hero = () => {
   return (
@@ -7,8 +7,8 @@ const Hero = () => {
       sx={{
         bgcolor: "rgba(95, 111, 255, var(--tw-bg-opacity, 1))",
         borderRadius: 2,
-        px: { xs: 3, md: 6, lg: 10 },
-        py: { xs: 5, md: "8vw" },
+        px: {xs: 3, md: 6, lg: 10},
+        py: {xs: 5, md: "8vw"},
         mt: 3, // gap from AppBar
       }}
     >
@@ -19,7 +19,6 @@ const Hero = () => {
           alignItems="center"
           justifyContent="space-between"
         >
-          {/* ✅ Left Content */}
           <Grid item xs={12} md={6}>
             <Typography
               variant="h3"
@@ -27,7 +26,7 @@ const Hero = () => {
               fontWeight="bold"
               color="white"
               gutterBottom
-              sx={{ lineHeight: 1.2 }}
+              sx={{lineHeight: 1.2}}
             >
               Book Appointment <br /> With Trusted Doctors
             </Typography>
@@ -37,12 +36,12 @@ const Hero = () => {
               alignItems="center"
               gap={2}
               color="white"
-              sx={{ fontSize: "0.9rem", mb: 3 }}
+              sx={{fontSize: "0.9rem", mb: 3}}
             >
               <img
                 src="/assets/group_profiles.png"
                 alt="Doctors group"
-                style={{ width: "100px" }}
+                style={{width: "100px"}}
               />
               <Typography variant="body2">
                 Simply browse through our extensive list of trusted doctors,
@@ -71,7 +70,6 @@ const Hero = () => {
             </Button>
           </Grid>
 
-          {/* ✅ Right Image (side by side on md+) */}
           <Grid
             item
             xs={12}

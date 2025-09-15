@@ -77,7 +77,7 @@ const DoctorCard = React.memo(({doctor, onClick}) => {
         </Typography>
         {doctor.experience && (
           <Typography variant="body2" color="text.secondary">
-            {doctor.experience} years of experience
+            {doctor.experience} of experience
           </Typography>
         )}
       </CardContent>

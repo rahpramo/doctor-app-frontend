@@ -18,8 +18,8 @@ const specialities = [
     img: "/assets/Dermatologist.svg",
   },
   {
-    name: "Pediatricians",
-    href: "/doctors/Pediatricians",
+    name: "Pediatrician",
+    href: "/doctors/Pediatrician",
     img: "/assets/Pediatricians.svg",
   },
   {

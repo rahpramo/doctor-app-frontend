@@ -33,9 +33,7 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const doctorsList = useSelector((state) => state.doctors.doctorsList);
   const [featuredDoctors, setFeaturedDoctors] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const {callApi} = useApi();
+  const {callApi, loading, error} = useApi();
 
   // Check authentication status and restore session
   useEffect(() => {
@@ -72,12 +70,7 @@ const HomePage = () => {
   useEffect(() => {
     const loadDoctors = async () => {
       if (doctorsList.length === 0) {
-        setLoading(true);
-        const result = await callApi(fetchDoctors);
-        if (!result.success) {
-          setError(result.error);
-        }
-        setLoading(false);
+        await callApi(fetchDoctors);
       }
     };
 
@@ -272,7 +265,7 @@ const HomePage = () => {
         }}
       >
         <Container maxWidth="lg">
-          <Typography variant="body1" gutterBottom>
+          <Typography variant="body1">
             © {new Date().getFullYear()} Lotus Medical. All rights reserved.
           </Typography>
           <Typography variant="body2" sx={{opacity: 0.8}}>

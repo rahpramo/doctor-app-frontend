@@ -39,11 +39,6 @@ const makeApiCall = async (method, endpoint, data = null, params = {}) => {
   }
 };
 
-// User-related functions
-export const fetchCurrentUser = async () => {
-  return makeApiCall('get', API_ENDPOINTS.AUTH.CURRENT_USER);
-};
-
 // Doctor-related functions
 export const fetchDoctors = async (params = {}) => {
   return makeApiCall('get', API_ENDPOINTS.DOCTORS, null, {
@@ -57,10 +52,6 @@ export const fetchDoctorById = async (id, params = {}) => {
     populate: '*',
     ...params
   });
-};
-
-export const createDoctor = async (doctorData) => {
-  return makeApiCall('post', API_ENDPOINTS.DOCTORS, { data: doctorData });
 };
 
 // Appointment-related functions
