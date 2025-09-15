@@ -238,7 +238,7 @@ const DoctorCard = React.memo(({doctor, onClick}) => {
           variant="h6"
           sx={{color: "#262626", fontWeight: 600, mb: 1}}
         >
-          Dr. {doctor.name}
+          {doctor.name}
         </Typography>
         <Typography
           variant="body2"
