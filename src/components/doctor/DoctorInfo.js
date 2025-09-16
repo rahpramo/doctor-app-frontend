@@ -223,7 +223,7 @@ const AppointmentPage = () => {
             />
             <CardContent>
               <Typography variant="h6" gutterBottom>
-                Dr. {selectedDoctor.name}
+                {selectedDoctor.name}
               </Typography>
               <Stack
                 direction="row"
@@ -245,7 +245,7 @@ const AppointmentPage = () => {
                 >
                   <SpecialtyIcon fontSize="small" color="action" />
                   <Typography variant="body2">
-                    {selectedDoctor.experience} years experience
+                    {selectedDoctor.experience} experience
                   </Typography>
                 </Stack>
               )}
@@ -281,7 +281,7 @@ const AppointmentPage = () => {
           <Card sx={{mb: 4}}>
             <CardContent>
               <Typography variant="h5" gutterBottom>
-                About Dr. {selectedDoctor.name}
+                About {selectedDoctor.name}
               </Typography>
               <Divider sx={{mb: 2}} />
               <Typography variant="body1" paragraph>

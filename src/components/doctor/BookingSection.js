@@ -130,7 +130,7 @@ const BookingSection = ({selectedDoctor}) => {
     <Box mt={4}>
       <Paper elevation={2} sx={{p: 3, borderRadius: 2}}>
         <Typography variant="h5" gutterBottom fontWeight="600">
-          Book Appointment with Dr. {selectedDoctor.name}
+          Book Appointment with {selectedDoctor.name}
         </Typography>
 
         <Stack direction="row" spacing={1} sx={{mb: 3}} flexWrap="wrap">
@@ -142,7 +142,7 @@ const BookingSection = ({selectedDoctor}) => {
           />
           {selectedDoctor.experience && (
             <Chip
-              label={`${selectedDoctor.experience} years experience`}
+              label={`${selectedDoctor.experience} experience`}
               variant="outlined"
             />
           )}
