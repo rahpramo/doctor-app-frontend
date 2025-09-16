@@ -1,5 +1,5 @@
 // hooks/useApi.js
-import { useState, useCallback } from 'react';
+import {useState, useCallback} from "react";
 
 export const useApi = () => {
   const [loading, setLoading] = useState(false);
@@ -11,17 +11,24 @@ export const useApi = () => {
 
     try {
       const result = await apiFunction(...args);
-      
+
       if (!result) {
-        setError('No response from server');
-        return { success: false, error: 'No response from server' };
+        setError("No response from server");
+        return {success: false, error: "No response from server"};
       }
 
-      return { success: true, data: result.data, meta: result.meta };
+      if (result.error || result.message) {
+        const errorMessage =
+          result.message || result.error || "Unknown error from server";
+        setError(errorMessage);
+        return {success: false, error: errorMessage};
+      }
+
+      return {success: true, data: result.data, meta: result.meta};
     } catch (err) {
-      const errorMessage = err.message || 'An unexpected error occurred';
+      const errorMessage = err.message || "An unexpected error occurred";
       setError(errorMessage);
-      return { success: false, error: errorMessage };
+      return {success: false, error: errorMessage};
     } finally {
       setLoading(false);
     }
@@ -35,6 +42,6 @@ export const useApi = () => {
     loading,
     error,
     callApi,
-    clearError
+    clearError,
   };
 };
