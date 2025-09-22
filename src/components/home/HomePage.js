@@ -128,7 +128,6 @@ const HomePage = () => {
           <CardMedia
             component="img"
             alt={doctor.name}
-            height="220"
             image={
               !hasImage || !doctor.avatar
                 ? `${strapiMediaUrl}/upload_area_8bc1382fd8.png`
@@ -138,6 +137,8 @@ const HomePage = () => {
               objectFit: hasImage ? "cover" : "contain",
               bgcolor: hasImage ? "transparent" : "grey.100",
             }}
+            width="345"
+            height="220"
           />
           <CardContent sx={{flexGrow: 1}}>
             <Typography gutterBottom variant="h6" component="div" noWrap>
@@ -222,7 +223,14 @@ const HomePage = () => {
           </Box>
 
           {loading && doctorsList.length === 0 ? (
-            <Box sx={{display: "flex", justifyContent: "center", py: 8}}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                py: 8,
+                minHeight: 300,
+              }}
+            >
               <CircularProgress />
             </Box>
           ) : featuredDoctors.length > 0 ? (
@@ -244,7 +252,7 @@ const HomePage = () => {
               </Box>
             </>
           ) : (
-            <Box sx={{textAlign: "center", py: 4}}>
+            <Box sx={{textAlign: "center", py: 4, minHeight: 300}}>
               <Typography variant="h6" color="text.secondary">
                 No doctors available at the moment
               </Typography>

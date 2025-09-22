@@ -82,11 +82,16 @@ const Hero = () => {
             <img
               src="/assets/header_img.png"
               alt="Doctor illustration"
+              width={450}
+              height={400}
               style={{
                 width: "100%",
                 maxWidth: "450px",
+                height: "auto",
                 borderRadius: "16px",
               }}
+              loading="eager" // for LCP
+              fetchpriority="high"
             />
           </Grid>
         </Grid>

@@ -1,6 +1,6 @@
 import React from "react";
 import {Box, Typography, Link, Avatar} from "@mui/material";
-import { specialities } from "../../utils/constants";
+import {specialities} from "../../utils/constants";
 
 const SpecialitySection = () => {
   return (
@@ -65,6 +65,7 @@ const SpecialitySection = () => {
                 height: {xs: 64, sm: 96},
                 mb: 1,
               }}
+              imgProps={{width: 96, height: 96}}
               variant="circular"
             />
             <Typography variant="caption" sx={{fontSize: "0.8rem"}}>
