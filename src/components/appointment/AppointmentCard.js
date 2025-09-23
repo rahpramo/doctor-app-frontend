@@ -84,7 +84,7 @@ const AppointmentCard = React.memo(
               color="text.primary"
               gutterBottom
             >
-              Dr. {appointment.doctorName}
+               {appointment.doctorName}
             </Typography>
 
             <Typography
